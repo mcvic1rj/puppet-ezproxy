@@ -722,7 +722,10 @@ IfUser ldapadmin2; Admin
     context 'when no key provided' do
       let(:params) {{}}
 
-      it { expect { is_expected.to contain_class('ezproxy') }.to raise_error(Puppet::Error, /EZProxy requires a key or WS key for authorization/) }
+      it "raises" do 
+        expect {contain_class('ezproxy')}.to 
+        raise_error(Puppet::Error, /EZProxy requires a key or WS key for authorization/)
+      end
     end
   end
   context 'when upgrading from another version of EZProxy' do
