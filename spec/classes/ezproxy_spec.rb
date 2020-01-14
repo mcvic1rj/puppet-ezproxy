@@ -722,8 +722,8 @@ IfUser ldapadmin2; Admin
     context 'when no key provided' do
       let(:params) {{}}
 
-      it "raises" do 
-        expect {contain_class('ezproxy')}.to 
+      it 'raises' do
+        expect {contain_class('ezproxy')}.to
         raise_error(Puppet::Error, /EZProxy requires a key or WS key for authorization/)
       end
     end
@@ -790,7 +790,10 @@ IfUser ldapadmin2; Admin
         puppetversion: '4.10.4',
       }}
 
-      it { expect { is_expected.to contain_class('ezproxy') }.to raise_error(Puppet::Error, /Nexenta not supported/) }
+      it 'raises' do
+        expect {contain_class('ezproxy')}.to
+        raise_error(Puppet::Error, /Nexenta not supported/)
+      end
     end
   end
 end
